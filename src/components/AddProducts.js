@@ -2,6 +2,15 @@
 import React from 'react';
 
 const AddProducts = () => {
+
+    const addProducts = () => {
+
+    }
+
+    const productImgHandler = () => {
+        
+    }
+
     return (
         <div className='container'>
             <br/>
