@@ -36,6 +36,9 @@ const Signup = () => {
                 <br/>
                 <button type='submit' className='btn btn-success btn-md mybtn' >REGISTER</button>
             </form>
+            {
+                error && <div className='error-msg'>{error}</div>
+            }
         </div>
     )
 }
