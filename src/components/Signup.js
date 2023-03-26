@@ -1,7 +1,12 @@
 
-import React from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { auth, db } from '../config/Config';
+import Login from './Login';
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 
-const Signup = () => {
+const Signup = (props) => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -10,6 +15,23 @@ const Signup = () => {
 
     const signup = (e) => {
         e.preventDefault(); 
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(async(res) => {
+            const usersCollection = collection(db, "Users");
+            const q = query(usersCollection, where("userEmail", "==", res.user.email));
+            const snapshot = await getDocs(q);
+            if(snapshot.docs.length === 0){
+                const payload = {
+                    userName: name,
+                    userEmail: email,
+                    userPassword: password,
+                }
+                const res1 = await addDoc(usersCollection, payload);
+            }
+            // window.location.href = 'login';
+        }).catch((err) => {
+            setError(err.message);
+        })
     }
 
 
@@ -39,6 +61,10 @@ const Signup = () => {
             {
                 error && <div className='error-msg'>{error}</div>
             }
+            <br/>
+            <span>Already have an account? Login
+                <Link to='login'> Here</Link>
+            </span>
         </div>
     )
 }

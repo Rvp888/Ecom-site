@@ -19,3 +19,9 @@ html, body {
     width: 100%;
   }
 }
+
+.error-msg {
+  color: red;
+  font-size: 12px;
+  font-weight: 600;
+}
