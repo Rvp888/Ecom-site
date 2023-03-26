@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { db, storage } from '../config/Config';
-import { getDownloadURL } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { collection } from 'firebase/firestore';
 
 
@@ -32,19 +32,23 @@ const AddProducts = () => {
         e.preventDefault();
         // console.log(productName, productPrice, productImg);
         // storing the image in firebase
-        const uploadTask = storage.ref(`product-images/${productImg.name}`).put(productImg);
-        uploadTask.on('state_changed', snapshot => {
+        const imgRef = ref(storage, `product-images/${productImg.name}`);
+        const uploadTask = uploadBytesResumable(imgRef, productImg);
+        uploadTask.on('state_changed', 
+        (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log(progress);
-        }, err => {
+        }, (err) => {
             setError(err.message)
-        }, () => {
+        }, 
+        () => {
             // getting product url and if success then storing the product in db.
-            storage.ref('product-images').child(productImg.name).getDownloadURL().then(url => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log('File available at', downloadURL);
                 db.collection('Products').add({
                     ProductName: productName,
                     ProductPrice: Number(productPrice),
-                    ProductImg: url
+                    ProductImg: downloadURL
                 }).then(() => {
                     setProductName('');
                     setProductPrice(0);
@@ -52,7 +56,7 @@ const AddProducts = () => {
                     setError('');
                     document.getElementById('file').value = '';
                 }).catch(err => setError(err.message));
-            })
+            });
         })
     }
 
