@@ -32,6 +32,10 @@ const AddProducts = () => {
         e.preventDefault();
         // console.log(productName, productPrice, productImg);
         // storing the image in firebase
+        if(!productImg){
+            setError('Please select an image');
+            return;
+        }
         const imgRef = ref(storage, `product-images/${productImg.name}`);
         const uploadTask = uploadBytesResumable(imgRef, productImg);
         uploadTask.on('state_changed', 
@@ -51,18 +55,14 @@ const AddProducts = () => {
                     ProductImg: downloadURL
                 };
                 const productCollection = collection(db, "Products");
-                const res = addDoc(productCollection, productDetails);
-                // db.collection('Products').add({
-                //     ProductName: productName,
-                //     ProductPrice: Number(productPrice),
-                //     ProductImg: downloadURL
-                // }).then(() => {
-                //     setProductName('');
-                //     setProductPrice(0);
-                //     setProductImg('');
-                //     setError('');
-                //     document.getElementById('file').value = '';
-                // }).catch(err => setError(err.message));
+                const res = addDoc(productCollection, productDetails)
+                .then(() => {
+                    setProductName('');
+                    setProductPrice(0);
+                    setProductImg('');
+                    setError('');
+                    document.getElementById('file').value = '';
+                }).catch(err => setError(err.message));
             });
         })
     }
@@ -97,4 +97,4 @@ const AddProducts = () => {
     )
 }
 
-export default AddProducts
+export default AddProducts;
