@@ -25,7 +25,10 @@ const AddProducts = () => {
                 <br/>
                 <input type="number" className='form-control' required 
                 />
-                <input type="file" onChange={productImgHandler} />
+                <br/>
+                <label htmlFor='product-img'>Product Image</label>
+                <br/>
+                <input type="file" className='form-control' onChange={productImgHandler} />
                 <br/>
                 <button className='btn btn-success btn-md' >ADD</button>
             </form>
