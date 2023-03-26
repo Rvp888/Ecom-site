@@ -27,6 +27,7 @@ const Signup = () => {
                 <br/>
                 <input type='password' className='form-control' required />
                 <br/>
+                <button type='submit' className='btn btn-success btn-md mybtn' >REGISTER</button>
             </form>
         </div>
     )
