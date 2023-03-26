@@ -37,6 +37,15 @@ h1 {
     height: 100%;
 }
 
+.products-container .product-card .product-name {
+    /* display: block; */
+    width: 100%;
+    color: #f57224;
+    margin-top: 5px;
+}
+
+
+
 
 
 
