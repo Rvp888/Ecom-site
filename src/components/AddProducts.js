@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { db, storage } from '../config/Config';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
-import { collection } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
 
 const AddProducts = () => {
@@ -45,17 +45,24 @@ const AddProducts = () => {
             // getting product url and if success then storing the product in db.
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
-                db.collection('Products').add({
+                const productDetails = {
                     ProductName: productName,
                     ProductPrice: Number(productPrice),
                     ProductImg: downloadURL
-                }).then(() => {
-                    setProductName('');
-                    setProductPrice(0);
-                    setProductImg('');
-                    setError('');
-                    document.getElementById('file').value = '';
-                }).catch(err => setError(err.message));
+                };
+                const productCollection = collection(db, "Products");
+                const res = addDoc(productCollection, productDetails);
+                // db.collection('Products').add({
+                //     ProductName: productName,
+                //     ProductPrice: Number(productPrice),
+                //     ProductImg: downloadURL
+                // }).then(() => {
+                //     setProductName('');
+                //     setProductPrice(0);
+                //     setProductImg('');
+                //     setError('');
+                //     document.getElementById('file').value = '';
+                // }).catch(err => setError(err.message));
             });
         })
     }
