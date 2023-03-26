@@ -1,7 +1,12 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const AddProducts = () => {
+
+    const [productName, setProductName] = useState('');
+    const [productPrice, setProductPrice] = useState(0);
+    const [productImg, setProductImg] = useState(null);
+    const [error, setError] = useState('');
 
     const addProducts = () => {
 
@@ -21,6 +26,7 @@ const AddProducts = () => {
                 <br/>
                 <input type="text" className='form-control' required 
                 />
+                <br/>
                 <label htmlFor='product-price'>Product Price</label>
                 <br/>
                 <input type="number" className='form-control' required 
@@ -30,8 +36,11 @@ const AddProducts = () => {
                 <br/>
                 <input type="file" className='form-control' onChange={productImgHandler} />
                 <br/>
-                <button className='btn btn-success btn-md' >ADD</button>
+                <button className='btn btn-success btn-md mybtn' >ADD</button>
             </form>
+            {
+                error && <span>{error}</span>
+            }
         </div>
     )
 }
