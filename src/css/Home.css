@@ -28,5 +28,12 @@
 }
 
 .navbox .rightside {
-    
+    display: flex;
+}
+
+.navbox .rightside .navlinks {
+    font-size: 12px;
+    color: black;
+    font-weight: 600;
+    margin: auto 10px;
 }
