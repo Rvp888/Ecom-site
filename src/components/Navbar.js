@@ -1,5 +1,6 @@
 
 import React, { useContext } from 'react';
+import Icon from 'react-icons-kit';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
@@ -25,6 +26,7 @@ const Navbar = () => {
                 username && 
                 <div className='rightside'>
                     <span><Link to='/' className='navlinks'>{username}</Link></span>
+                    <span><Link to='cartproducts'><Icon></Icon></Link></span>
                 </div>
             }
         </div>
