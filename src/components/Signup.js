@@ -1,7 +1,7 @@
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../config/Config';
 import Login from './Login';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
@@ -12,6 +12,7 @@ const Signup = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const signup = (e) => {
         e.preventDefault(); 
@@ -28,7 +29,7 @@ const Signup = (props) => {
                 }
                 const res1 = await addDoc(usersCollection, payload);
             }
-            window.location.href = 'login';
+            navigate('/login', {replace: true});
         }).catch((err) => {
             setError(err.message);
         })

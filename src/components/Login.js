@@ -1,7 +1,7 @@
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/Config';
 
 const Login = () => {
@@ -9,12 +9,12 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
 
   const login = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password).then(() => {
-      window.location.href = '/';
+      navigate('/', {replace: true});
     }).catch((err) => {
       setError(err.message);
     })
