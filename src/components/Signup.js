@@ -28,7 +28,7 @@ const Signup = (props) => {
                 }
                 const res1 = await addDoc(usersCollection, payload);
             }
-            // window.location.href = 'login';
+            window.location.href = 'login';
         }).catch((err) => {
             setError(err.message);
         })
