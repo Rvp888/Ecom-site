@@ -2,13 +2,12 @@
 import React, { useContext } from 'react';
 import Icon from 'react-icons-kit';
 import { cart } from 'react-icons-kit/entypo/cart';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
-import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const username = useContext(appContext);
 
