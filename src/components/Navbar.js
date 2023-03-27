@@ -24,7 +24,7 @@ const Navbar = () => {
             {
                 username && 
                 <div className='rightside'>
-                    {username}
+                    <span><Link to='/' className='navlinks'>{username}</Link></span>
                 </div>
             }
         </div>
