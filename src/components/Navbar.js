@@ -5,10 +5,16 @@ import { cart } from 'react-icons-kit/entypo/cart';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
+import { useHistory } from 'react-router-dom';
 
 const Navbar = () => {
+    const history = useHistory();
 
     const username = useContext(appContext);
+
+    const logout = () => {
+
+    }
 
     return (
         <div className='navbox'>
@@ -28,7 +34,7 @@ const Navbar = () => {
                 <div className='rightside'>
                     <span><Link to='/' className='navlinks'>{username}</Link></span>
                     <span><Link to='cartproducts' className='navlinks'><Icon icon={cart} /></Link></span>
-                    <span><button className='logout-btn'>Logout</button></span>
+                    <span><button className='logout-btn' onClick={logout}>LOGOUT</button></span>
                 </div>
             }
         </div>
