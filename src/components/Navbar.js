@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Icon from 'react-icons-kit';
 import { cart } from 'react-icons-kit/entypo/cart';
 import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../config/Config';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
 
@@ -12,7 +13,9 @@ const Navbar = () => {
     const username = useContext(appContext);
 
     const logout = () => {
-
+        auth.signOut().then(() => {
+            navigate('/login', {replace: true});
+        })
     }
 
     return (
