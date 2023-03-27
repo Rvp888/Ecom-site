@@ -1,6 +1,8 @@
 
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../config/Config';
 
 const Login = () => {
 
@@ -9,8 +11,13 @@ const Login = () => {
   const [error, setError] = useState('');
 
 
-  const login = () => {
-
+  const login = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password).then(() => {
+      window.location.href = '/';
+    }).catch((err) => {
+      setError(err.message);
+    })
   }
 
 
