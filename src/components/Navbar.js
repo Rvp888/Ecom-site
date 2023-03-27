@@ -21,7 +21,12 @@ const Navbar = () => {
                 </div>
             }
             
-            
+            {
+                username && 
+                <div className='rightside'>
+                    {username}
+                </div>
+            }
         </div>
     )
 }
