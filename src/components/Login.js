@@ -2,7 +2,8 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../config/Config';
+import { auth, db } from '../config/Config';
+import { collection, where, getDocs, query } from 'firebase/firestore';
 
 const Login = () => {
 
@@ -13,7 +14,14 @@ const Login = () => {
 
   const login = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password).then(() => {
+    signInWithEmailAndPassword(auth, email, password).then(async(res) => {
+      const usersCollection = collection(db, "Users");
+      const q = query(usersCollection, where("userEmail", "==", res.user.email));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
       navigate('/', {replace: true});
     }).catch((err) => {
       setError(err.message);

@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../config/Config';
-import Login from './Login';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 
 const Signup = (props) => {
@@ -21,6 +20,7 @@ const Signup = (props) => {
             const usersCollection = collection(db, "Users");
             const q = query(usersCollection, where("userEmail", "==", res.user.email));
             const snapshot = await getDocs(q);
+            console.log(snapshot.data())
             if(snapshot.docs.length === 0){
                 const payload = {
                     userName: name,
