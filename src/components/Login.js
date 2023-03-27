@@ -1,9 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
+
+  const login = () => {
+
+  }
 
 
   return (
@@ -22,7 +30,7 @@ const Login = () => {
         <input type='password' className='form-control' required
           onChange={(e) => setPassword(e.target.value)} value={password} />
         <br />
-        <button type='submit' className='btn btn-success btn-md mybtn' >REGISTER</button>
+        <button type='submit' className='btn btn-success btn-md mybtn' >LOGIN</button>
       </form>
       {
         error && <div className='error-msg'>{error}</div>
