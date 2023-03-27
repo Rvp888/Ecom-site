@@ -13,6 +13,14 @@ const Navbar = () => {
             <div className='leftside'>
                 <img src={logo} />
             </div>
+            {
+                !username && 
+                <div className='rightside'>
+                    <Link to="signup" className='navlinks'>SIGN UP</Link>
+                    <Link to="login" className='navlinks'>LOGIN</Link>
+                </div>
+            }
+            
             
         </div>
     )
