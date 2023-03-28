@@ -10,6 +10,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './config/Config';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { CartContextProvider } from './global/CartContext';
+import Cart from './components/Cart';
 
 export const appContext = createContext();
 
@@ -48,6 +49,7 @@ const App = () => {
                 <Route path="addproducts" element={<AddProducts />} ></Route>
                 <Route path="signup" element={<Signup />} ></Route>
                 <Route path="login" element={<Login />} ></Route>
+                <Route path="cartproducts" element={<Cart />} ></Route>
               </Routes>
             </BrowserRouter>
           </CartContextProvider>
