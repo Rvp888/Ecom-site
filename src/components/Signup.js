@@ -20,7 +20,6 @@ const Signup = (props) => {
             const usersCollection = collection(db, "Users");
             const q = query(usersCollection, where("userEmail", "==", res.user.email));
             const snapshot = await getDocs(q);
-            console.log(snapshot.data())
             if(snapshot.docs.length === 0){
                 const payload = {
                     userName: name,

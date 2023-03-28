@@ -16,7 +16,7 @@ export class ProductsContextProvider extends React.Component {
         getDocs(collection(db, "Products")).then((res) => {
             let dataArr = [...res.docs];
             dataArr = dataArr.map((ele) => {
-              return { ...ele.data(), ProductId: ele.id };
+              return { ...ele.data(), ProductID: ele.id };
             });
             this.setState({
                 products: dataArr

@@ -29,7 +29,6 @@ const App = () => {
           // doc.data() is never undefined for query doc snapshots
           // console.log(doc.id, " => ", doc.data().userName);
           setUsername(doc.data().userName)
-          console.log(username);
         });
       }
       else {
