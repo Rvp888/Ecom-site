@@ -9,8 +9,7 @@ const Products = () => {
 
     const { products } = useContext(ProductsContext);
 
-    const data = useContext(cartContext);
-    console.log(data);
+    const { dispatch } = useContext(cartContext);
 
     return (
         <>
