@@ -4,6 +4,7 @@ import { cartContext } from './../global/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/Config';
+import Navbar from './Navbar';
 
 const Cart = () => {
 
@@ -20,9 +21,15 @@ const Cart = () => {
     
 
     return (
-        <div>
+        <>
+            <Navbar />
+            <>
+                {shoppingCart.length !== 0 && <h1>Cart</h1>}
+                <div className='cart-container'>
 
-        </div>
+                </div>
+            </>
+        </>
     )
 }
 
