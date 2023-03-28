@@ -2,13 +2,15 @@
 import React, { useContext } from 'react';
 import { ProductsContext } from '../global/ProductsContext';
 import '../css/Products.css';
+import { cartContext } from '../global/CartContext';
 
 
 const Products = () => {
 
     const { products } = useContext(ProductsContext);
 
-    console.log(products);
+    const data = useContext(cartContext);
+    console.log(data);
 
     return (
         <>

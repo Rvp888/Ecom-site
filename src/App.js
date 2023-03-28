@@ -9,6 +9,7 @@ import Login from './components/Login';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from './config/Config';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { CartContextProvider } from './global/CartContext';
 
 export const appContext = createContext();
 
@@ -40,14 +41,16 @@ const App = () => {
     return (
       <appContext.Provider value={username}>
         <ProductsContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<Home />} ></Route>
-            <Route path="addproducts" element={<AddProducts />} ></Route>
-            <Route path="signup" element={<Signup />} ></Route>
-            <Route path="login" element={<Login />} ></Route>
-          </Routes>
-        </BrowserRouter>
+          <CartContextProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route exact path="/" element={<Home />} ></Route>
+                <Route path="addproducts" element={<AddProducts />} ></Route>
+                <Route path="signup" element={<Signup />} ></Route>
+                <Route path="login" element={<Login />} ></Route>
+              </Routes>
+            </BrowserRouter>
+          </CartContextProvider>
         </ProductsContextProvider>
       </appContext.Provider> 
     )
