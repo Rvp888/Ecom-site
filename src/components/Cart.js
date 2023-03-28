@@ -1,7 +1,7 @@
 
 import React, { useContext, useEffect } from 'react'
 import { cartContext } from './../global/CartContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/Config';
 import Navbar from './Navbar';
@@ -26,7 +26,14 @@ const Cart = () => {
             <>
                 {shoppingCart.length !== 0 && <h1>Cart</h1>}
                 <div className='cart-container'>
-
+                    {
+                        shoppingCart.length === 0 && 
+                        <>
+                            <div>no items in your cart or slow internet causing trouble (Refresh the page) or you are not logged in</div>
+                            <div><Link to='/'>Return to Home Page</Link></div>
+                        </>
+                    }
+                    
                 </div>
             </>
         </>
