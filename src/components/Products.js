@@ -27,7 +27,7 @@ const Products = () => {
                         <div className='product-price'>
                             Rs. {product.ProductPrice}.00
                         </div>
-                        <button className='addcart-btn' >ADD TO CART</button>
+                        <button className='addcart-btn' onClick={dispatch({type: 'ADD_TO_CART', id: product.ProductID, product})} >ADD TO CART</button>
                     </div>
                 ))}
             </div>
