@@ -1,5 +1,5 @@
 
-export const cartReducer = (state, action) => {
+export const CartReducer = (state, action) => {
     const {shoppingCart, totalPrice, totalQty} = state;
 
     let product;

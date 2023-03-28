@@ -22,22 +22,6 @@ export class ProductsContextProvider extends React.Component {
                 products: dataArr
             })
         })
-        // db.collection('Products').onSnapshot(snapshot => {
-        //     let changes = snapshot.docChanges();
-        //     changes.forEach(change => {
-        //         if(change.type === 'added'){
-        //             prevProducts.push({
-        //                 ProductId: change.doc.id,
-        //                 ProductName: change.doc.data().ProductName,
-        //                 ProductPrice: change.doc.data().ProductPrice,
-        //                 ProductImg: change.doc.data().ProductImg
-        //             })
-        //         }
-        //         this.setState({
-        //             products: prevProducts
-        //         })
-        //     })
-        // })
     }
 
     render(){
