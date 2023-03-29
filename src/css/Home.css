@@ -27,14 +27,15 @@
     height: 100%;
 }
 
-.navbox .rightside {
+.navbox .rightside{
     display: flex;
+    position: relative;
 }
 
 .navbox .rightside .navlinks {
     font-size: 12px;
-    color: black;
     font-weight: 600;
+    color: black;
     margin: auto 10px;
     text-decoration: none;
 }
