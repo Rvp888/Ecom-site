@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { cartContext } from './../global/CartContext';
 import { onAuthStateChanged } from 'firebase/auth';
 import { query, where, getDocs } from 'firebase/firestore';
-import { usersCollection } from '../config/Config';
+import { auth, usersCollection } from '../config/Config';
 
 
 const Cashout = () => {
@@ -21,7 +21,7 @@ const Cashout = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        onAuthStateChanged(async (user) => {
+        onAuthStateChanged(auth, async(user) => {
             if (user) {
                 const q = query(usersCollection, where("userEmail", "==", user.email));
                 const querySnapshot = await getDocs(q);
