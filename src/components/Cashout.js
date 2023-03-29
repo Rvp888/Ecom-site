@@ -53,10 +53,10 @@ const Cashout = () => {
                 { successMsg && <div className='success-msg'>{successMsg}</div> }
                 <form autoComplete='off' className='form-group' onSubmit={cashoutSubmit}>
                     <label htmlFor='Name'>Name</label>
-                    <input type='text' className='form-control' required disabled />
+                    <input type='text' className='form-control' value={name} required disabled />
                     <br/>
                     <label htmlFor='Email'>Email</label>
-                    <input type='email' className='form-control' required disabled />
+                    <input type='email' className='form-control' value={email} required disabled />
                     <br/>
                     <label htmlFor='Cell No'>Cell No</label>
                     <input type='number' className='form-control' required placeholder='eg 09658741236' />
