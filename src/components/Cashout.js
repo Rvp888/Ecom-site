@@ -19,9 +19,16 @@ const Cashout = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        onAuthStateChanged((user) => {
+        onAuthStateChanged(async (user) => {
             if (user) {
-                
+                const q = query(usersCollection, where("userEmail", "==", user.email));
+                const querySnapshot = await getDocs(q);
+                querySnapshot.forEach((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    // console.log(doc.id, " => ", doc.data().userName);
+                    setName(doc.data().userName);
+                    setEmail(doc.data().userEmail);
+                });
             }
         })
     });
