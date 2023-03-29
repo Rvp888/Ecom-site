@@ -65,10 +65,10 @@ const Cashout = () => {
                     <input type='text' className='form-control' value={address} onChange={(e) => setAddress(e.target.value)} required />
                     <br/>
                     <label htmlFor='Price To Pay'>Price To Pay</label>
-                    <input type='number' className='form-control' required disabled />
+                    <input type='number' className='form-control' value={totalPrice} required disabled />
                     <br/>
                     <label htmlFor='Total No of Products'>Total No of Products</label>
-                    <input type='number' className='form-control' required disabled />
+                    <input type='number' className='form-control' value={totalQty} required disabled />
                     <br/>
                     <button type='submit' className='btn btn-success btn-md mybtn' >SUBMIT</button>
                 </form>
