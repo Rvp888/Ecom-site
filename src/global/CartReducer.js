@@ -78,5 +78,9 @@ export const CartReducer = (state, action) => {
             return {
                 shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
             }
+            break;
+
+        default:
+            return state;
     }
 }
