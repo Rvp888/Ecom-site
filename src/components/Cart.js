@@ -33,7 +33,17 @@ const Cart = () => {
                             <div><Link to='/'>Return to Home Page</Link></div>
                         </>
                     }
-                    
+
+                    {
+                        shoppingCart && shoppingCart.map(cart => (
+                            <div className='cart-card' key={cart.ProductID}>
+                                <div className='cart-img'>
+                                    <img src={cart.ProductImg} alt='Not Found'/>
+                                </div>
+                                <div className='cart-name'>{cart.ProductName}</div>
+                            </div>
+                        ))
+                    }
                 </div>
             </>
         </>
