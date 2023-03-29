@@ -1,8 +1,9 @@
 
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from './../global/CartContext';
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 const Cashout = () => {
@@ -16,6 +17,14 @@ const Cashout = () => {
     const [address, setAddress] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        onAuthStateChanged((user) => {
+            if (user) {
+                
+            }
+        })
+    });
 
     const cashoutSubmit = () => {
 
