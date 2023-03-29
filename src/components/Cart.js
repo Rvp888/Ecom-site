@@ -64,6 +64,15 @@ const Cart = () => {
                             </div>
                         ))
                     }
+
+                    { 
+                        shoppingCart.length > 0 && 
+                        <div className='cart-summary'>
+                            <div className='cart-summary-heading'>
+                                Cart-Summary
+                            </div>
+                        </div> 
+                    }
                 </div>
             </>
         </>
