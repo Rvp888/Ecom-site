@@ -95,9 +95,9 @@ const Cashout = () => {
                     <br/>
                     <button type='submit' className='btn btn-success btn-md mybtn' >SUBMIT</button>
                 </form>
-                {
-                    error && <div className='error-msg'>{error}</div>
-                }
+                { error && <div className='error-msg'>{error}</div> }
+                    
+                
             </div>
         </>
     )
