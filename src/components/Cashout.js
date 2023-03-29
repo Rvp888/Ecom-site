@@ -1,11 +1,17 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
+import { cartContext } from './../global/CartContext';
+
 
 const Cashout = () => {
 
+    const navigate = useNavigate();
+    const { dispatch, totalPrice, totalQty } = useContext(cartContext);
+
     const cashoutSubmit = () => {
-        
+
     }
 
 
