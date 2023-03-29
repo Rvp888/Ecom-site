@@ -32,6 +32,9 @@ const Cashout = () => {
                     setEmail(doc.data().userEmail);
                 });
             }
+            else {
+                navigate( '/login', { replace: true } );
+            }
         })
     });
 
