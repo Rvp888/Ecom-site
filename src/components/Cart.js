@@ -55,6 +55,9 @@ const Cart = () => {
                                 <div className='dec' onClick={() => dispatch({ type: 'DEC', id: cart.ProductID, cart })}> 
                                     <Icon icon={ic_remove} size={24} />
                                 </div>
+                                <div className='cart-price'>
+                                    Rs. {cart.TotalProductPrice}.00
+                                </div>
                             </div>
                         ))
                     }
