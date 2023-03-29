@@ -39,7 +39,7 @@ const Navbar = () => {
                 username && 
                 <div className='rightside'>
                     <span><Link to='/' className='navlinks'>{username}</Link></span>
-                    <span><Link to='/cartproducts' className='navlinks'><Icon icon={cart} /></Link></span>
+                    <span><Link to='/cartproducts' className='navlinks'><Icon icon={cart} title='Go to cart' /></Link></span>
                     <div className='relative'>
                         <span className='no-of-products'>{totalQty}</span>
                     </div>

@@ -51,5 +51,9 @@ export const CartReducer = (state, action) => {
             return {
                 shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
             }
+        
+        case 'DEC':
+            product = action.cart;
+
     }
 }
