@@ -25,6 +25,9 @@ const Cashout = () => {
                     <label htmlFor='Delivery Address'>Delivery Address</label>
                     <input type='text' className='form-control' required />
                     <br/>
+                    <label htmlFor='Price To Pay'>Price To Pay</label>
+                    <input type='number' className='form-control' required disabled />
+                    <br/>
                 </form>
             </div>
         </>
