@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { cartContext } from './../global/CartContext';
 import { onAuthStateChanged } from 'firebase/auth';
 import { query, where, getDocs } from 'firebase/firestore';
-import { auth, usersCollection } from '../config/Config';
+import { auth, db, usersCollection } from '../config/Config';
 
 
 const Cashout = () => {
@@ -38,8 +38,30 @@ const Cashout = () => {
         })
     });
 
-    const cashoutSubmit = () => {
-
+    const cashoutSubmit = (e) => {
+        e.preventDefault();
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                const date = new Date();
+                const time = date.getTime();
+                db.collection('Buyer-info ' + user.uid).doc('_' + time).set({
+                    BuyerName: name,
+                    BuyerEmail: email,
+                    BuyerCell: cell,
+                    BuyerAddress: address,
+                    BuyerPayment: totalPrice,
+                    BuyerQuantity: totalQty
+                }).then(() => {
+                    setCell('');
+                    setAddress('');
+                    dispatch({ type: 'EMPTY' })
+                    setSuccessMsg('Your order has been placed successfully. Thanks for visiting us. You will be redirected to home page after 5 seconds');
+                    setTimeout(() => {
+                        navigate( '/', { replace: true } );
+                    }, 5000)
+                }).catch(err => setError(err.message))
+            }
+        })
     }
 
 
