@@ -9,6 +9,7 @@ import Icon from 'react-icons-kit';
 import { ic_add } from 'react-icons-kit/md/ic_add';
 import { ic_remove } from 'react-icons-kit/md/ic_remove';
 import { iosTrashOutline } from 'react-icons-kit/ionicons/iosTrashOutline';
+import '../css/Cart.css';
 
 
 
