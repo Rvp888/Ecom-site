@@ -48,6 +48,8 @@ export const CartReducer = (state, action) => {
             updatedPrice = totalPrice + product.ProductPrice;
             index = shoppingCart.findIndex(cart => cart.ProductID === action.id);
             shoppingCart[index] = product;
-
+            return {
+                shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
+            }
     }
 }
