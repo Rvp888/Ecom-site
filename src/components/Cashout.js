@@ -19,6 +19,9 @@ const Cashout = () => {
                     <label htmlFor='Email'>Email</label>
                     <input type='email' className='form-control' required disabled />
                     <br/>
+                    <label htmlFor='Cell No'>Cell No</label>
+                    <input type='number' className='form-control' required placeholder='eg 09658741236' />
+                    <br/>
                 </form>
             </div>
         </>
