@@ -80,6 +80,11 @@ export const CartReducer = (state, action) => {
             }
             break;
 
+        case 'EMPTY':
+            return {
+                shoppingCart: [], totalPrice: 0, totalQty: 0
+            }
+
         default:
             return state;
     }
