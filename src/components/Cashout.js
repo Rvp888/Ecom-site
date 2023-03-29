@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from './../global/CartContext';
 import { onAuthStateChanged } from 'firebase/auth';
+import { query, where, getDocs } from 'firebase/firestore';
+import { usersCollection } from '../config/Config';
 
 
 const Cashout = () => {
