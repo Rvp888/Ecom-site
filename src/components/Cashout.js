@@ -16,6 +16,9 @@ const Cashout = () => {
                     <label htmlFor='Name'>Name</label>
                     <input type='text' className='form-control' required disabled />
                     <br/>
+                    <label htmlFor='Email'>Email</label>
+                    <input type='email' className='form-control' required disabled />
+                    <br/>
                 </form>
             </div>
         </>
