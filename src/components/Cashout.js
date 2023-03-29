@@ -28,6 +28,9 @@ const Cashout = () => {
                     <label htmlFor='Price To Pay'>Price To Pay</label>
                     <input type='number' className='form-control' required disabled />
                     <br/>
+                    <label htmlFor='Total No of Products'>Total No of Products</label>
+                    <input type='number' className='form-control' required disabled />
+                    <br/>
                 </form>
             </div>
         </>
