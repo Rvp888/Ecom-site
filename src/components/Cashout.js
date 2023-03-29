@@ -14,6 +14,8 @@ const Cashout = () => {
     const [email, setEmail] = useState('');
     const [cell, setCell] = useState('');
     const [address, setAddress] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
+    const [error, setError] = useState('');
 
     const cashoutSubmit = () => {
 
