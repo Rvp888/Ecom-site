@@ -16,8 +16,7 @@ export const CartReducer = (state, action) => {
     switch(action.type){
         case 'ADD_TO_CART':
             const check = shoppingCart.find(product => product.ProductID === action.id);
-            if(check){
-                
+            if(check){                
                 toast.info('this product is already in your cart', {
                     position: "top-right",
                     autoClose: 2000,
@@ -40,5 +39,12 @@ export const CartReducer = (state, action) => {
                 }
             }
             break;
+        
+        case 'INC':
+            product = action.cart;
+            product.qty = ++product.qty;
+            product.TotalProductPrice = product.ProductPrice * product.qty;
+            
+
     }
 }
