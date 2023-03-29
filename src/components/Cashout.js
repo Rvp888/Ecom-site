@@ -62,7 +62,7 @@ const Cashout = () => {
                     <input type='number' className='form-control' value={cell} onChange={(e) => setCell(e.target.value)} required placeholder='eg 09658741236' />
                     <br/>
                     <label htmlFor='Delivery Address'>Delivery Address</label>
-                    <input type='text' className='form-control' required />
+                    <input type='text' className='form-control' value={address} onChange={(e) => setAddress(e.target.value)} required />
                     <br/>
                     <label htmlFor='Price To Pay'>Price To Pay</label>
                     <input type='number' className='form-control' required disabled />
