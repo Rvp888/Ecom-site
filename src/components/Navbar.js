@@ -4,10 +4,14 @@ import Icon from 'react-icons-kit';
 import { cart } from 'react-icons-kit/entypo/cart';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../config/Config';
+import { cartContext } from '../global/CartContext';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
 
 const Navbar = () => {
+
+    const { totalQty } = useContext(cartContext);
+
     const navigate = useNavigate();
 
     const username = useContext(appContext);
