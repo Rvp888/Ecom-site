@@ -80,7 +80,7 @@ const Cart = () => {
                                 <span>Total Qty</span>
                                 <span>{totalQty}</span>
                             </div>
-                            <Link to='cashout' className='cashout-link'>
+                            <Link to='/cashout' className='cashout-link'>
                                 <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>
                                     Cash on delivery
                                 </button>

@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 import { useNavigate } from 'react-router-dom';
 import { cartContext } from './../global/CartContext';
 import { onAuthStateChanged } from 'firebase/auth';
-import { query, where, getDocs } from 'firebase/firestore';
+import { query, where, getDocs, doc, setDoc } from 'firebase/firestore';
 import { auth, db, usersCollection } from '../config/Config';
 
 
@@ -44,7 +44,8 @@ const Cashout = () => {
             if (user) {
                 const date = new Date();
                 const time = date.getTime();
-                db.collection('Buyer-info ' + user.uid).doc('_' + time).set({
+                const docRef = doc(db, ('Buyer-info ' + user.uid), ('_' + time));
+                setDoc(docRef,{
                     BuyerName: name,
                     BuyerEmail: email,
                     BuyerCell: cell,
