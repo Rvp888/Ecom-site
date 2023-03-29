@@ -58,6 +58,9 @@ const Cart = () => {
                                 <div className='cart-price'>
                                     Rs. {cart.TotalProductPrice}.00
                                 </div>
+                                <button className='delete-btn' onClick={() => dispatch({ type: 'DELETE', id: cart.ProductID, cart })} >
+                                    <Icon icon={iosTrashOutline} size={24} />
+                                </button>
                             </div>
                         ))
                     }
