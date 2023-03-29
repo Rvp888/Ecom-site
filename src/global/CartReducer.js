@@ -71,7 +71,7 @@ export const CartReducer = (state, action) => {
             break;
         
         case 'DELETE':
-            const filtered = shoppingCart.filter(product => product.ProductID === action.id);
+            const filtered = shoppingCart.filter(product => product.ProductID !== action.id);
             product = action.cart;
             updatedQty = totalQty - product.qty;
             updatedPrice = totalPrice - product.TotalProductPrice;
