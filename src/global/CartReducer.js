@@ -69,6 +69,8 @@ export const CartReducer = (state, action) => {
                 return state;
             }
             break;
-
+        
+        case 'DELETE':
+            const filtered = shoppingCart.filter(product => product.ProductID === action.id);
     }
 }
