@@ -29,7 +29,6 @@
 
 .navbox .rightside{
     display: flex;
-    position: relative;
 }
 
 .navbox .rightside .navlinks {
@@ -40,7 +39,11 @@
     text-decoration: none;
 }
 
-.navbox .rightside .no-of-products {
+.navbox .rightside .relative {
+    position: relative;
+}
+
+.navbox .rightside .relative .no-of-products {
     background: #f57224;
     color: #fff;
     font-size: 10px;
@@ -51,7 +54,7 @@
     border-radius: 3px;
     position: absolute;
     top: -5px;
-    left: 60px;
+    right: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
