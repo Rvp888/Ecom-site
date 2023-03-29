@@ -51,6 +51,7 @@ const Cart = () => {
                                 <div className='inc' onClick={() => dispatch({type: 'INC', id: cart.ProductID, cart})}>
                                     <Icon icon={ic_add} size={24} />
                                 </div>
+                                <div className='quantity'>{cart.qty}</div>
                             </div>
                         ))
                     }
