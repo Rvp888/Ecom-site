@@ -40,6 +40,7 @@ const Navbar = () => {
                 <div className='rightside'>
                     <span><Link to='/' className='navlinks'>{username}</Link></span>
                     <span><Link to='/cartproducts' className='navlinks'><Icon icon={cart} /></Link></span>
+                    <span className='no-of-products'>{totalQty}</span>
                     <span><button className='logout-btn' onClick={logout}>LOGOUT</button></span>
                 </div>
             }

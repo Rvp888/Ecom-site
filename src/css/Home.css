@@ -39,6 +39,23 @@
     text-decoration: none;
 }
 
+.navbox .rightside .no-of-products {
+    background: #f57224;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    position: absolute;
+    top: -5px;
+    left: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logout-btn {
     padding: 5px;
     border-radius: 3px;
