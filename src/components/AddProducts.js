@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { db, storage } from '../config/Config';
+import { db, productCollection, storage } from '../config/Config';
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { addDoc, collection } from 'firebase/firestore';
 
@@ -54,7 +54,7 @@ const AddProducts = () => {
                     ProductPrice: Number(productPrice),
                     ProductImg: downloadURL
                 };
-                const productCollection = collection(db, "Products");
+                
                 const res = addDoc(productCollection, productDetails)
                 .then(() => {
                     setProductName('');

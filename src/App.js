@@ -1,5 +1,5 @@
 
-import React, { Component, createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AddProducts from './components/AddProducts';
 import Home from './components/Home';
@@ -7,11 +7,12 @@ import { ProductsContextProvider } from './global/ProductsContext';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from './config/Config';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { auth, usersCollection } from './config/Config';
+import { query, where, getDocs } from 'firebase/firestore';
 import { CartContextProvider } from './global/CartContext';
 import Cart from './components/Cart';
 import Cashout from './components/Cashout';
+
 
 export const appContext = createContext();
 
@@ -20,10 +21,8 @@ const App = () => {
   const [username, setUsername] = useState(null);
 
   useEffect(() => {
-
-    onAuthStateChanged(auth, async (user) => {
+    onAuthStateChanged(auth, async(user) => {
       if (user) {
-        const usersCollection = collection(db, "Users");
         const q = query(usersCollection, where("userEmail", "==", user.email));
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -36,7 +35,7 @@ const App = () => {
         setUsername(null)
       }
     })
-  });
+  },[]);
     
 
     return (
