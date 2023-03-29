@@ -48,10 +48,13 @@ const Cart = () => {
                                 </div>
                                 <div className='cart-name'>{cart.ProductName}</div>
                                 <div className='cart-price-original'>Rs. {cart.ProductPrice}.00</div>
-                                <div className='inc' onClick={() => dispatch({type: 'INC', id: cart.ProductID, cart})}>
+                                <div className='inc' onClick={() => dispatch({ type: 'INC', id: cart.ProductID, cart })}>
                                     <Icon icon={ic_add} size={24} />
                                 </div>
                                 <div className='quantity'>{cart.qty}</div>
+                                <div className='dec' onClick={() => dispatch({ type: 'DEC', id: cart.ProductID, cart })}> 
+                                    <Icon icon={ic_remove} size={24} />
+                                </div>
                             </div>
                         ))
                     }
