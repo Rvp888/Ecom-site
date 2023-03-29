@@ -75,6 +75,10 @@ const Cart = () => {
                                 <span>Total Price</span>
                                 <span>{totalPrice}</span>
                             </div>
+                            <div className='cart-summary-price'>
+                                <span>Total Qty</span>
+                                <span>{totalQty}</span>
+                            </div>
                         </div> 
                     }
                 </div>
