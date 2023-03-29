@@ -75,5 +75,8 @@ export const CartReducer = (state, action) => {
             product = action.cart;
             updatedQty = totalQty - product.qty;
             updatedPrice = totalPrice - product.TotalProductPrice;
+            return {
+                shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
+            }
     }
 }
