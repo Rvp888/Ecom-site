@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/Config';
 import Navbar from './Navbar';
+import Icon from 'react-icons-kit';
 
 const Cart = () => {
 
@@ -41,6 +42,10 @@ const Cart = () => {
                                     <img src={cart.ProductImg} alt='Not Found'/>
                                 </div>
                                 <div className='cart-name'>{cart.ProductName}</div>
+                                <div className='cart-price-original'>Rs. {cart.ProductPrice}.00</div>
+                                <div className='inc' onClick={() => dispatch({type: 'INC', id: cart.ProductID, cart})}>
+                                    <Icon icon={ic_add} size={24} />
+                                </div>
                             </div>
                         ))
                     }
