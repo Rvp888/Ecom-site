@@ -1,5 +1,4 @@
 
-// import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { doc, setDoc } from 'firebase/firestore';
@@ -18,8 +17,6 @@ export const CartReducer = (state, action) => {
     let index;
     let updatedPrice;
     let updatedQty;
-
-    
 
     switch(action.type){
         case 'ADD_TO_CART':
