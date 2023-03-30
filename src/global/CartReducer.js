@@ -1,12 +1,8 @@
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { doc, setDoc } from 'firebase/firestore';
-import { auth, db } from '../config/Config';
-import { onAuthStateChanged } from 'firebase/auth';
 
 toast.configure();
-
 
 
 export const CartReducer = (state, action) => {
