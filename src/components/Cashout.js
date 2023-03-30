@@ -25,8 +25,7 @@ const Cashout = () => {
             if (user) {
                 const q = query(usersCollection, where("userEmail", "==", user.email));
                 const querySnapshot = await getDocs(q);
-                querySnapshot.forEach((doc) => {
-                    
+                querySnapshot.forEach((doc) => {                   
                     // console.log(doc.id, " => ", doc.data().userName);
                     setName(doc.data().userName);
                     setEmail(doc.data().userEmail);

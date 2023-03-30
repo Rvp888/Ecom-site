@@ -1,17 +1,25 @@
 
-import React from 'react';
+// import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { doc, setDoc } from 'firebase/firestore';
+import { auth, db } from '../config/Config';
+import { onAuthStateChanged } from 'firebase/auth';
 
 toast.configure();
 
+
+
 export const CartReducer = (state, action) => {
+    
     const {shoppingCart, totalPrice, totalQty} = state;
 
     let product;
     let index;
     let updatedPrice;
     let updatedQty;
+
+    
 
     switch(action.type){
         case 'ADD_TO_CART':
@@ -34,6 +42,7 @@ export const CartReducer = (state, action) => {
                 product['TotalProductPrice'] = product.ProductPrice * product.qty;
                 updatedQty = totalQty + 1;
                 updatedPrice = totalPrice + product.ProductPrice;
+                
                 return {
                     shoppingCart: [product, ...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
                 }

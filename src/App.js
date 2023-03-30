@@ -12,6 +12,7 @@ import { query, where, getDocs } from 'firebase/firestore';
 import { CartContextProvider } from './global/CartContext';
 import Cart from './components/Cart';
 import Cashout from './components/Cashout';
+import { CartReducer } from './global/CartReducer';
 
 
 export const appContext = createContext();
@@ -19,6 +20,7 @@ export const appContext = createContext();
 const App = () => {
 
   const [username, setUsername] = useState(null);
+  const [useremail, setUseremail] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, async(user) => {
@@ -28,7 +30,8 @@ const App = () => {
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           // console.log(doc.id, " => ", doc.data().userName);
-          setUsername(doc.data().userName)
+          setUsername(doc.data().userName);
+          setUseremail(doc.data().userEmail);
         });
       }
       else {

@@ -21,5 +21,6 @@ const storage = getStorage();
 
 const productCollection = collection(db, "Products");
 const usersCollection = collection(db, "Users");
+const cartCollection = collection(db, "carts");
 
-export { auth, db, storage, productCollection, usersCollection };
+export { auth, db, storage, productCollection, usersCollection, cartCollection };
