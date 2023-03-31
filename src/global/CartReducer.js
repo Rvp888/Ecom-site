@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '../config/Config';
 import { onAuthStateChanged } from 'firebase/auth';
+import { useState, useEffect } from 'react';
 
 toast.configure();
 
@@ -11,6 +12,16 @@ toast.configure();
 export const CartReducer = (state, action) => {
     
     const {shoppingCart, totalPrice, totalQty} = state;
+    const [ cartRef, setCartRef ] = useState(null);
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setCartRef( doc(db, 'Carts', user.email) );
+            }
+        });
+    },[]);
+
 
     let product;
     let index;
@@ -38,13 +49,8 @@ export const CartReducer = (state, action) => {
                 product['TotalProductPrice'] = product.ProductPrice * product.qty;
                 updatedQty = totalQty + 1;
                 updatedPrice = totalPrice + product.ProductPrice;
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        const cartRef = doc(db, 'Carts', user.email);
-                        setDoc(cartRef, {
-                            shoppingCart: [product, ...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
-                        })
-                    }
+                setDoc(cartRef, {
+                    shoppingCart: [product, ...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
                 });
                 return {
                     shoppingCart: [product, ...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
@@ -60,14 +66,9 @@ export const CartReducer = (state, action) => {
             updatedPrice = totalPrice + product.ProductPrice;
             index = shoppingCart.findIndex(cart => cart.ProductID === action.id);
             shoppingCart[index] = product;
-            console.log(shoppingCart);
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    const cartRef = doc(db, 'Carts', user.email);
-                    setDoc(cartRef, {
-                        shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
-                    })
-                }
+            console.log(shoppingCart);            
+            setDoc(cartRef, {
+                shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
             });
             return {
                 shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
@@ -83,13 +84,8 @@ export const CartReducer = (state, action) => {
                 updatedPrice = totalPrice - product.ProductPrice;
                 index = shoppingCart.findIndex(cart => cart.ProductID === action.id);
                 shoppingCart[index] = product;
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        const cartRef = doc(db, 'Carts', user.email);
-                        setDoc(cartRef, {
-                            shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
-                        })
-                    }
+                setDoc(cartRef, {
+                    shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
                 });
                 return {
                     shoppingCart: [...shoppingCart], totalPrice: updatedPrice, totalQty: updatedQty
@@ -104,13 +100,8 @@ export const CartReducer = (state, action) => {
             product = action.cart;
             updatedQty = totalQty - product.qty;
             updatedPrice = totalPrice - product.TotalProductPrice;
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    const cartRef = doc(db, 'Carts', user.email);
-                    setDoc(cartRef, {
-                        shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
-                    })
-                }
+            setDoc(cartRef, {
+                shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
             });
             return {
                 shoppingCart: [...filtered], totalPrice: updatedPrice, totalQty: updatedQty
@@ -118,13 +109,8 @@ export const CartReducer = (state, action) => {
             break;
 
         case 'EMPTY':
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    const cartRef = doc(db, 'Carts', user.email);
-                    setDoc(cartRef, {
-                        shoppingCart: [], totalPrice: 0, totalQty: 0
-                    })
-                }
+            setDoc(cartRef, {
+                shoppingCart: [], totalPrice: 0, totalQty: 0
             });
             return {
                 shoppingCart: [], totalPrice: 0, totalQty: 0

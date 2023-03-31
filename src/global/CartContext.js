@@ -25,7 +25,7 @@ export const CartContextProvider = (props) => {
                   }
             }
         })
-    })
+    },[]);
 
     const [cart, dispatch] = useReducer(CartReducer, cartDetails?.shoppingCart?.length ? cartDetails : { shoppingCart: [], totalPrice: 0, totalQty: 0 });
 
