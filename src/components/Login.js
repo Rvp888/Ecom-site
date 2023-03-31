@@ -2,8 +2,8 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, db, usersCollection } from '../config/Config';
-import { collection, where, getDocs, query } from 'firebase/firestore';
+import { auth } from '../config/Config';
+
 
 const Login = () => {
 
@@ -51,4 +51,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;
