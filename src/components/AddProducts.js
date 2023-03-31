@@ -27,7 +27,7 @@ const AddProducts = () => {
         }
     }
 
-    // add product form submit event
+    // add product- form submit event
     const addProduct = (e) => {
         e.preventDefault();
         // console.log(productName, productPrice, productImg);

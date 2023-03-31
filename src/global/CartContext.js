@@ -20,16 +20,12 @@ export const CartContextProvider = (props) => {
                     console.log("Document data:", docSnap.data());
                     setCartDetails(docSnap.data())
                     console.log('cartDetails',cartDetails);
-                    // shoppingCart = docSnap.data().shoppingCart;
-                    // totalPrice = docSnap.data().totalPrice;
-                    // totalQty = docSnap.data().totalQty;
                   } else {
-                    // doc.data() will be undefined in this case
                     console.log("No such document!");
                   }
             }
         })
-    },[])
+    })
 
     const [cart, dispatch] = useReducer(CartReducer, cartDetails?.shoppingCart?.length ? cartDetails : { shoppingCart: [], totalPrice: 0, totalQty: 0 });
 

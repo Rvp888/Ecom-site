@@ -60,6 +60,7 @@ export const CartReducer = (state, action) => {
             updatedPrice = totalPrice + product.ProductPrice;
             index = shoppingCart.findIndex(cart => cart.ProductID === action.id);
             shoppingCart[index] = product;
+            console.log(shoppingCart);
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     const cartRef = doc(db, 'Carts', user.email);
