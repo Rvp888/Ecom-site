@@ -17,38 +17,38 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 const Cart = () => {
 
     const navigate = useNavigate();
-    const {dispatch} = useContext(cartContext);
-    const [cartDetails, setCartDetails] = useState({});
+    const {dispatch, shoppingCart, totalPrice, totalQty} = useContext(cartContext);
+    // const [cartDetails, setCartDetails] = useState({});
 
-    useEffect(() => {
-        onAuthStateChanged(auth, async(user) => {
-            if (user) {
-                const cartRef = doc(db, 'Carts', user.email);
-                const docSnap = await getDoc(cartRef);
-                if (docSnap.exists()) {
-                    // console.log("Document data:", docSnap.data());
-                    setCartDetails(docSnap.data())
-                    // console.log('cartDetails',cartDetails);
-                    // shoppingCart = docSnap.data().shoppingCart;
-                    // totalPrice = docSnap.data().totalPrice;
-                    // totalQty = docSnap.data().totalQty;
-                  } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
-                  }
-            }
-        })
-    })
+    // useEffect(() => {
+    //     onAuthStateChanged(auth, async(user) => {
+    //         if (user) {
+    //             const cartRef = doc(db, 'Carts', user.email);
+    //             const docSnap = await getDoc(cartRef);
+    //             if (docSnap.exists()) {
+    //                 // console.log("Document data:", docSnap.data());
+    //                 setCartDetails(docSnap.data())
+    //                 // console.log('cartDetails',cartDetails);
+    //                 // shoppingCart = docSnap.data().shoppingCart;
+    //                 // totalPrice = docSnap.data().totalPrice;
+    //                 // totalQty = docSnap.data().totalQty;
+    //               } else {
+    //                 // doc.data() will be undefined in this case
+    //                 console.log("No such document!");
+    //               }
+    //         }
+    //     })
+    // })
     
 
     return (
         <>
             <Navbar />
             <>
-                {cartDetails?.shoppingCart?.length !== 0 && <h1>Cart</h1>}
+                {shoppingCart?.length !== 0 && <h1>Cart</h1>}
                 <div className='cart-container'>
                     {
-                        cartDetails?.shoppingCart?.length === 0 && 
+                        shoppingCart?.length === 0 && 
                         <>
                             <div>no items in your cart or slow internet causing trouble (Refresh the page) or you are not logged in</div>
                             <div><Link to='/'>Return to Home Page</Link></div>
@@ -56,7 +56,7 @@ const Cart = () => {
                     }
 
                     {
-                        cartDetails?.shoppingCart && cartDetails?.shoppingCart.map(cart => (
+                         shoppingCart && shoppingCart.map(cart => (
                             <div className='cart-card' key={cart.ProductID}>
                                 <div className='cart-img'>
                                     <img src={cart.ProductImg} alt='Not Found'/>
@@ -81,18 +81,18 @@ const Cart = () => {
                     }
 
                     { 
-                        cartDetails?.shoppingCart?.length > 0 && 
+                        shoppingCart?.length > 0 && 
                         <div className='cart-summary'>
                             <div className='cart-summary-heading'>
                                 Cart-Summary
                             </div>
                             <div className='cart-summary-price'>
                                 <span>Total Price</span>
-                                <span>{cartDetails?.totalPrice}</span>
+                                <span>{totalPrice}</span>
                             </div>
                             <div className='cart-summary-price'>
                                 <span>Total Qty</span>
-                                <span>{cartDetails?.totalQty}</span>
+                                <span>{totalQty}</span>
                             </div>
                             <Link to='/cashout' className='cashout-link'>
                                 <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>

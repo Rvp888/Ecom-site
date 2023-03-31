@@ -1,7 +1,7 @@
 
-import { collection, getDocs } from 'firebase/firestore';
+import { getDocs } from 'firebase/firestore';
 import React, { createContext } from 'react';
-import { db } from '../config/Config';
+import { productCollection } from '../config/Config';
 
 export const ProductsContext = createContext();
 
@@ -13,7 +13,7 @@ export class ProductsContextProvider extends React.Component {
 
     componentDidMount() {
         // const prevProducts = this.state.products;
-        getDocs(collection(db, "Products")).then((res) => {
+        getDocs(productCollection).then((res) => {
             let dataArr = [...res.docs];
             dataArr = dataArr.map((ele) => {
               return { ...ele.data(), ProductID: ele.id };
