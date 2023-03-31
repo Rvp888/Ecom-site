@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { cartContext } from './../global/CartContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -10,38 +10,45 @@ import { ic_add } from 'react-icons-kit/md/ic_add';
 import { ic_remove } from 'react-icons-kit/md/ic_remove';
 import { iosTrashOutline } from 'react-icons-kit/ionicons/iosTrashOutline';
 import '../css/Cart.css';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 
 
 const Cart = () => {
 
     const navigate = useNavigate();
-    const { shoppingCart, dispatch, totalPrice, totalQty } = useContext(cartContext);
+    const {dispatch} = useContext(cartContext);
+    const [cartDetails, setCartDetails] = useState({});
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async(user) => {
             if (user) {
                 const cartRef = doc(db, 'Carts', user.email);
-                setDoc(cartRef, {
-                    shoppingCart, totalPrice, totalQty
-                })
-            }
-            else {
-                navigate('/login', {replace: true});
+                const docSnap = await getDoc(cartRef);
+                if (docSnap.exists()) {
+                    console.log("Document data:", docSnap.data());
+                    setCartDetails(docSnap.data())
+                    console.log('cartDetails',cartDetails);
+                    // shoppingCart = docSnap.data().shoppingCart;
+                    // totalPrice = docSnap.data().totalPrice;
+                    // totalQty = docSnap.data().totalQty;
+                  } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                  }
             }
         })
-    })
+    },[])
     
 
     return (
         <>
             <Navbar />
             <>
-                {shoppingCart.length !== 0 && <h1>Cart</h1>}
+                {cartDetails?.shoppingCart?.length !== 0 && <h1>Cart</h1>}
                 <div className='cart-container'>
                     {
-                        shoppingCart.length === 0 && 
+                        cartDetails?.shoppingCart?.length === 0 && 
                         <>
                             <div>no items in your cart or slow internet causing trouble (Refresh the page) or you are not logged in</div>
                             <div><Link to='/'>Return to Home Page</Link></div>
@@ -49,7 +56,7 @@ const Cart = () => {
                     }
 
                     {
-                        shoppingCart && shoppingCart.map(cart => (
+                        cartDetails?.shoppingCart && cartDetails?.shoppingCart.map(cart => (
                             <div className='cart-card' key={cart.ProductID}>
                                 <div className='cart-img'>
                                     <img src={cart.ProductImg} alt='Not Found'/>
@@ -74,18 +81,18 @@ const Cart = () => {
                     }
 
                     { 
-                        shoppingCart.length > 0 && 
+                        cartDetails?.shoppingCart?.length > 0 && 
                         <div className='cart-summary'>
                             <div className='cart-summary-heading'>
                                 Cart-Summary
                             </div>
                             <div className='cart-summary-price'>
                                 <span>Total Price</span>
-                                <span>{totalPrice}</span>
+                                <span>{cartDetails?.totalPrice}</span>
                             </div>
                             <div className='cart-summary-price'>
                                 <span>Total Qty</span>
-                                <span>{totalQty}</span>
+                                <span>{cartDetails?.totalQty}</span>
                             </div>
                             <Link to='/cashout' className='cashout-link'>
                                 <button className='btn btn-success btn-md' style={{ marginTop: 5 + 'px' }}>

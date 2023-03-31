@@ -42,22 +42,22 @@ const App = () => {
     
 
     return (
-      <appContext.Provider value={username}>
-        <ProductsContextProvider>
-          <CartContextProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route exact path="/" element={<Home />} ></Route>
-                <Route path="addproducts" element={<AddProducts />} ></Route>
-                <Route path="signup" element={<Signup />} ></Route>
-                <Route path="login" element={<Login />} ></Route>
-                <Route path="cartproducts" element={<Cart />} ></Route>
-                <Route path="/cashout" element={<Cashout/>}></Route>
-              </Routes>
-            </BrowserRouter>
-          </CartContextProvider>
-        </ProductsContextProvider>
-      </appContext.Provider> 
+      <BrowserRouter>
+        <appContext.Provider value={username}>
+          <ProductsContextProvider>
+            <CartContextProvider>            
+                <Routes>
+                  <Route exact path="/" element={<Home />} ></Route>
+                  <Route path="addproducts" element={<AddProducts />} ></Route>
+                  <Route path="signup" element={<Signup />} ></Route>
+                  <Route path="login" element={<Login />} ></Route>
+                  <Route path="cartproducts" element={<Cart />} ></Route>
+                  <Route path="/cashout" element={<Cashout/>}></Route>
+                </Routes>            
+            </CartContextProvider>
+          </ProductsContextProvider>
+        </appContext.Provider> 
+      </BrowserRouter>
     )
   }
 

@@ -1,5 +1,8 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { CartReducer } from './CartReducer';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from "../config/Config";
+import { doc, getDoc } from 'firebase/firestore';
 
 
 export const cartContext = createContext();
