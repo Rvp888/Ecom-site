@@ -10,6 +10,7 @@ const Signup = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [profileImg, setProfileImg] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -55,6 +56,10 @@ const Signup = (props) => {
                 <br/>
                 <input type='password' className='form-control' required 
                 onChange={(e) => setPassword(e.target.value)} value={password} />
+                <br/>
+                <label htmlFor='Profile picture' >Profile picture</label>
+                <br/>
+                <input type="file" className='form-control' id="file" />
                 <br/>
                 <button type='submit' className='btn btn-success btn-md mybtn' >REGISTER</button>
             </form>
