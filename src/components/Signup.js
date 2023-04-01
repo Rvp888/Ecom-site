@@ -59,7 +59,8 @@ const Signup = (props) => {
                 <br/>
                 <label htmlFor='Profile picture' >Profile picture</label>
                 <br/>
-                <input type="file" className='form-control' id="file" />
+                <input type="file" className='form-control' id="file"
+                onChange={(e) => setProfileImg(e.target.files[0])} />
                 <br/>
                 <button type='submit' className='btn btn-success btn-md mybtn' >REGISTER</button>
             </form>
