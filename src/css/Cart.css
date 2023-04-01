@@ -116,7 +116,7 @@
 .cart-summary {
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 40px;
     border: 1px solid #e4e4e4;
     box-shadow: 0 0 5px;
     width: 300px;
@@ -130,10 +130,13 @@
 .cart-summary .cart-summary-price {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
+.cart-summary .btn-success {
+    margin-top: 100px;
 
+}
 
 
 
