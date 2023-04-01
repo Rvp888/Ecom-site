@@ -32,7 +32,7 @@ const Navbar = () => {
 
             <div className='mid-portion'>
                 <input type='search' placeholder='Search' className='search-input' />
-                <button className='search-button'><Icon icon={search} /></button>
+                <button className='search-button'><Icon className='search-icon' icon={search} /></button>
             </div>
 
             {

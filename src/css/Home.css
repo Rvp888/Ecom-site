@@ -37,13 +37,34 @@
 }
 
 .mid-portion {
-    width: 40%;
+    width: 30%;
     height: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.search-input {
-    width: 70%;
+.mid-portion .search-input {
+    width: 85%;
     height: 100%;
+    border: 1px solid #ccc8c8;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 0 20px;
+    outline: none;
+}
+
+.mid-portion .search-button {
+    width: 15%;
+    height: 100%;
+    border: 1px solid #ccc8c8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 0 0 0px 0;
+    box-sizing: border-box;
+}
+
+.mid-portion .search-icon {
+    color: rgb(94, 92, 92);
 }
 
 .navbox .rightside{
