@@ -4,10 +4,10 @@
 }
 
 .products-heading {
-    width: 50%;
+    width: 30%;
     margin-left: 30px;
     border-bottom: 2px solid #585454;
-    border-bottom-style:dotted;
+    border-bottom-style: dashed;
     font-size: 25px;
     padding: 35px 0 10px 5px;
     margin-top: 90px;
