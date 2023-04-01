@@ -45,7 +45,7 @@ const Cart = () => {
         <>
             <Navbar />
             <>
-                {shoppingCart?.length !== 0 && <h1>Cart</h1>}
+                {shoppingCart?.length !== 0 && <h1 className='cart-heading'>Cart</h1>}
                 <div className='cart-container'>
                     {
                         shoppingCart?.length === 0 && 
