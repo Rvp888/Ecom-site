@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className='navbox'>
             <div className='leftside'>
                 <img src={logo} />
+                <span>E-Cart</span>
             </div>
             {
                 !username && 

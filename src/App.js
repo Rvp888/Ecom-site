@@ -45,7 +45,7 @@ const App = () => {
       <BrowserRouter>
         <appContext.Provider value={username}>
           <ProductsContextProvider>
-            <CartContextProvider>            
+            <CartContextProvider>  
                 <Routes>
                   <Route exact path="/" element={<Home />} ></Route>
                   <Route path="addproducts" element={<AddProducts />} ></Route>
@@ -53,7 +53,7 @@ const App = () => {
                   <Route path="login" element={<Login />} ></Route>
                   <Route path="cartproducts" element={<Cart />} ></Route>
                   <Route path="/cashout" element={<Cashout/>}></Route>
-                </Routes>            
+                </Routes>  
             </CartContextProvider>
           </ProductsContextProvider>
         </appContext.Provider> 
