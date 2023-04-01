@@ -2,7 +2,8 @@
 import React, { useContext } from 'react';
 import Icon from 'react-icons-kit';
 import { cart } from 'react-icons-kit/entypo/cart';
-import { Link, useNavigate } from 'react-router-dom';
+import {search} from 'react-icons-kit/fa/search';
+import { Link, useNavigate, } from 'react-router-dom';
 import { auth } from '../config/Config';
 import { cartContext } from '../global/CartContext';
 import logo from '../images/logo.svg';
@@ -28,6 +29,12 @@ const Navbar = () => {
                 <img src={logo} />
                 <span>E-Cart</span>
             </div>
+
+            <div className='mid-portion'>
+                <input type='search' placeholder='Search' className='search-input' />
+                <button className='search-button'><Icon icon={search} /></button>
+            </div>
+
             {
                 !userimg && 
                 <div className='rightside'>
