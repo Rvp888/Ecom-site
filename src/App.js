@@ -21,6 +21,7 @@ const App = () => {
 
   const [username, setUsername] = useState(null);
   const [useremail, setUseremail] = useState(null);
+  const [userimg, setUserImg] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, async(user) => {
@@ -32,6 +33,7 @@ const App = () => {
           // console.log(doc.id, " => ", doc.data().userName);
           setUsername(doc.data().userName);
           setUseremail(doc.data().userEmail);
+          setUserImg(doc.data().userImg);
         });
       }
       else {
@@ -43,7 +45,7 @@ const App = () => {
 
     return (
       <BrowserRouter>
-        <appContext.Provider value={username}>
+        <appContext.Provider value={userimg}>
           <ProductsContextProvider>
             <CartContextProvider>  
                 <Routes>

@@ -17,9 +17,9 @@ export const CartContextProvider = (props) => {
                 const cartRef = doc(db, 'Carts', user.email);
                 const docSnap = await getDoc(cartRef);
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
+                    // console.log("Document data:", docSnap.data());
                     setCartDetails(docSnap.data())
-                    console.log('cartDetails',cartDetails);
+                    // console.log('cartDetails',cartDetails);
                   } else {
                     console.log("No such document!");
                   }

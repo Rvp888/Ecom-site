@@ -2,8 +2,9 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, db, usersCollection } from '../config/Config';
+import { auth, db, storage, usersCollection } from '../config/Config';
 import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 const Signup = (props) => {
 
@@ -15,24 +16,40 @@ const Signup = (props) => {
     const navigate = useNavigate();
 
     const signup = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
-        .then(async(res) => {
-            console.log(res.user);
-            const q = query(usersCollection, where("userEmail", "==", res.user.email));
-            const snapshot = await getDocs(q);
-            if(snapshot.docs.length === 0){
-                const payload = {
-                    userName: name,
-                    userEmail: email,
-                    userPassword: password,
+            .then(async (res) => {
+                const q = query(usersCollection, where("userEmail", "==", res.user.email));
+                const snapshot = await getDocs(q);
+                if (snapshot.docs.length === 0) {
+                    console.log('inside if-condition')
+                    const imgRef = ref(storage, `user-images/${profileImg.name}`);
+                    const uploadTask = uploadBytesResumable(imgRef, profileImg);
+                    uploadTask.on('state_changed',
+                        (snapshot) => {
+                            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                            console.log(progress);
+                        }, (err) => {
+                            setError(err.message)
+                        },
+                        () => {
+                            // getting product url and if success then storing the product in db.
+                            getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+                                console.log('File available at', downloadURL);
+                                const payload = {
+                                    userName: name,
+                                    userEmail: email,
+                                    userPassword: password,
+                                    userImg: downloadURL,
+                                };
+                                const res1 = await addDoc(usersCollection, payload);
+                            })
+                        })
                 }
-                const res1 = await addDoc(usersCollection, payload);
-            }
-            navigate('/login', {replace: true});
-        }).catch((err) => {
-            setError(err.message);
-        })
+                navigate('/login', { replace: true });
+            }).catch((err) => {
+                setError(err.message);
+            })
     }
 
 

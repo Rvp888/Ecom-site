@@ -14,7 +14,7 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const username = useContext(appContext);
+    const userimg = useContext(appContext);
 
     const logout = () => {
         auth.signOut().then(() => {
@@ -29,7 +29,7 @@ const Navbar = () => {
                 <span>E-Cart</span>
             </div>
             {
-                !username && 
+                !userimg && 
                 <div className='rightside'>
                     <Link to="signup" className='navlinks'>SIGN UP</Link>
                     <Link to="login" className='navlinks'>LOGIN</Link>
@@ -37,9 +37,9 @@ const Navbar = () => {
             }
             
             {
-                username && 
+                userimg && 
                 <div className='rightside'>
-                    <span><Link to='/' className='navlinks'>{username}</Link></span>
+                    <span><Link to='/' className='navlinks'><img src={userimg} className='user-img' /></Link></span>
                     <span><Link to='/cartproducts' className='navlinks'><Icon icon={cart} title='Go to cart' /></Link></span>
                     <div className='relative'>
                         <span className='no-of-products'>{totalQty}</span>
