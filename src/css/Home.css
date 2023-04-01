@@ -110,6 +110,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f5412d;
+    /* color: #f5412d; */
     font-weight: 600;
 }

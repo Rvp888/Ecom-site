@@ -11,6 +11,7 @@ import { ic_remove } from 'react-icons-kit/md/ic_remove';
 import { iosTrashOutline } from 'react-icons-kit/ionicons/iosTrashOutline';
 import '../css/Cart.css';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+import Footer from './Footer';
 
 
 
@@ -103,6 +104,7 @@ const Cart = () => {
                     }
                 </div>
             </>
+            <Footer/>
         </>
     )
 }
