@@ -46,7 +46,7 @@
 .mid-portion .search-input {
     width: 85%;
     height: 100%;
-    border: 1px solid #ccc8c8;
+    border: 1px solid #a3a1a1;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 0 20px;
@@ -56,15 +56,17 @@
 .mid-portion .search-button {
     width: 15%;
     height: 100%;
-    border: 1px solid #ccc8c8;
+    border: 1px solid #a3a1a1;
+    border-left: none;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    padding: 0 0 0px 0;
+    padding: 0 0 5px 0;
     box-sizing: border-box;
+    background-color: #f66150;
 }
 
 .mid-portion .search-icon {
-    color: rgb(94, 92, 92);
+    color: white;
 }
 
 .navbox .rightside{
