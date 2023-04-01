@@ -10,17 +10,21 @@
 .navbox {
     width: 100%;
     height: auto;
-    border-bottom: 1px solid #e4e4e4;
+    border-bottom: 2px solid #e4e4e4;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 7px 25px;
+    background-color: #ccc8c8;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
 .navbox .leftside span {
     font-size: 30px;
     font-weight: 500;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 .navbox .leftside img {
@@ -62,14 +66,14 @@
 }
 
 .logout-btn {
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 3px;
     color: #fff;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     outline: none;
-    border: hidden;
+    border: 1px solid rgb(171, 174, 174);
     background-color: #2eca8b;
     margin-left: 10px;
 }
