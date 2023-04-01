@@ -90,3 +90,9 @@
     background-color: #f5412d;
     margin-left: 10px;
 }
+
+.logout-btn:hover {
+    background-color: #fd0505;
+    box-shadow: 0 0 3px 0;
+    transition: box-shadow, 0.5s;
+}

@@ -39,12 +39,12 @@ const Navbar = () => {
             {
                 userimg && 
                 <div className='rightside'>
-                    <span><Link to='/' className='navlinks'><img src={userimg} className='user-img' /></Link></span>
+                    <span><Link to='/' className='navlinks'><img src={userimg} className='user-img' title='Home' /></Link></span>
                     <span><Link to='/cartproducts' className='navlinks'><Icon icon={cart} size={25} className='cart-icon' title='Go to cart' /></Link></span>
                     <div className='relative'>
                         <span className='no-of-products'>{totalQty}</span>
                     </div>
-                    <span><button className='logout-btn' onClick={logout}>LOGOUT</button></span>
+                    <span><button className='logout-btn' title='Logout' onClick={logout}>LOGOUT</button></span>
                 </div>
             }
         </div>
