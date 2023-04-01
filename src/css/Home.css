@@ -34,21 +34,28 @@
 
 .navbox .rightside{
     display: flex;
+    align-items: center;
 }
 
 .user-img {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
+    border: 1px solid #b9b7b7;
     border-radius: 50%;
 }
 
-.navbox .rightside .navlinks {
+.cart-icon {
+    margin: 0 20px;
+    color: #150386;
+}
+
+/* .navbox .rightside .navlinks {
     font-size: 12px;
     font-weight: 600;
     color: black;
     margin: auto 10px;
     text-decoration: none;
-}
+} */
 
 .navbox .rightside .relative {
     position: relative;
@@ -64,15 +71,15 @@
     height: 14px;
     border-radius: 3px;
     position: absolute;
-    top: -5px;
-    right: 4px;
+    top: -22px;
+    right: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logout-btn {
-    padding: 5px 10px;
+    padding: 7px 10px;
     border-radius: 3px;
     color: #fff;
     font-size: 12px;
@@ -80,6 +87,6 @@
     cursor: pointer;
     outline: none;
     border: 1px solid rgb(171, 174, 174);
-    background-color: #2eca8b;
+    background-color: #f5412d;
     margin-left: 10px;
 }
