@@ -65,6 +65,11 @@
     background-color: #f66150;
 }
 
+.mid-portion .search-button:hover {
+    background-color: #f6321c;
+    transition: background-color, 1s;
+}
+
 .mid-portion .search-icon {
     color: white;
 }

@@ -8,11 +8,17 @@ export const ProductsContext = createContext();
 export class ProductsContextProvider extends React.Component {
 
     state = {
-        products: []
+        products: [],
+        searchedProducts: [],
+        searchedText: '',
+    }
+
+    filterSearchedProducts = (text) => {
+       setSearchedText(text);
+       let filteredProducts = products.filter(product => product.ProductName.toLowerCase().includes(text.toLowerCase()));
     }
 
     componentDidMount() {
-        // const prevProducts = this.state.products;
         getDocs(productCollection).then((res) => {
             let dataArr = [...res.docs];
             dataArr = dataArr.map((ele) => {
