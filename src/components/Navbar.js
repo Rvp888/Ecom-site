@@ -19,6 +19,10 @@ const Navbar = () => {
 
     const [ searchedText, setSearchedText ] = useState('');
 
+    const handleSearch = () => {
+        filterSearchedProducts(searchedText);
+    }
+
     const logout = () => {
         auth.signOut().then(() => {
             navigate('/login', {replace: true});
@@ -34,7 +38,7 @@ const Navbar = () => {
 
             <div className='mid-portion'>
                 <input type='search' placeholder='Search' className='search-input' onChange={(e) => setSearchedText(e.target.value)} />
-                <button className='search-button'><Icon className='search-icon' icon={search} /></button>
+                <button className='search-button' onClick={handleSearch}><Icon className='search-icon' icon={search} /></button>
             </div>
 
             {
