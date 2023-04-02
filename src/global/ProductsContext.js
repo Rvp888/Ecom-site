@@ -35,7 +35,7 @@ export class ProductsContextProvider extends React.Component {
 
     render(){
         return(
-            <ProductsContext.Provider value={{ products: [...this.state.products] }}>
+            <ProductsContext.Provider value={{ products: this.state.searchedText ? this.state.searchedProducts : this.state.products, filterSearchedProducts: this.filterSearchedProducts }}>
                 {this.props.children}
             </ProductsContext.Provider>
         )
