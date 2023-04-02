@@ -71,6 +71,7 @@ const Cashout = () => {
             <div className='container'>
                 <br/>
                 <h2>Cashout Details</h2>
+                <hr />
                 <br/>
                 { successMsg && <div className='success-msg'>{successMsg}</div> }
                 <form autoComplete='off' className='form-group' onSubmit={cashoutSubmit}>

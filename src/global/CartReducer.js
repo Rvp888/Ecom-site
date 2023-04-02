@@ -18,6 +18,13 @@ export const CartReducer = (state, action) => {
     let updatedQty;
 
     switch(action.type){
+        case 'UPDATE_DATA':
+            console.log(action.payload)
+            return {
+                shoppingCart: [...action.payload.shoppingCart],
+                totalPrice: action.payload.totalPrice,
+                totalQty: action.payload.totalQty
+            }
         case 'ADD_TO_CART':
             const check = shoppingCart.find(product => product.ProductID === action.id);
             if(check){                
