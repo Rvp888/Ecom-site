@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Icon from 'react-icons-kit';
 import { cart } from 'react-icons-kit/entypo/cart';
 import {search} from 'react-icons-kit/fa/search';
@@ -8,14 +8,16 @@ import { auth } from '../config/Config';
 import { cartContext } from '../global/CartContext';
 import logo from '../images/logo.svg';
 import { appContext } from './../App';
+import { ProductsContext } from '../global/ProductsContext';
 
 const Navbar = () => {
 
     const { totalQty } = useContext(cartContext);
-
+    const userimg = useContext(appContext);
+    const { filterSearchedProducts } = useContext(ProductsContext);
     const navigate = useNavigate();
 
-    const userimg = useContext(appContext);
+    const [ searchedText, setSearchedText ] = useState('');
 
     const logout = () => {
         auth.signOut().then(() => {
