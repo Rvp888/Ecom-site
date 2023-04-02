@@ -33,7 +33,7 @@ const Navbar = () => {
             </div>
 
             <div className='mid-portion'>
-                <input type='search' placeholder='Search' className='search-input' />
+                <input type='search' placeholder='Search' className='search-input' onChange={(e) => setSearchedText(e.target.value)} />
                 <button className='search-button'><Icon className='search-icon' icon={search} /></button>
             </div>
 
