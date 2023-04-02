@@ -14,11 +14,11 @@ export class ProductsContextProvider extends React.Component {
     }
 
     filterSearchedProducts = (text) => {
-       let filteredProducts = products.filter(product => product.ProductName.toLowerCase().includes(text.toLowerCase()));
-       this.setState = {
+       let filteredProducts = this.state.products.filter(product => product.ProductName.toLowerCase().includes(text.toLowerCase()));
+       this.setState({
             searchedProducts: filteredProducts,
             searchedText: text,
-       }
+       })
     }
 
     componentDidMount() {
